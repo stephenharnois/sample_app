@@ -33,8 +33,7 @@ describe "User Pages" do
       describe "after submission" do
         before { click_button submit }
 
-        it { should have_selector('title', text: 'Sign up') }
-        it { should have_content('Email is invalid') }
+        it { should have_error_message('errors') }
       end
     end
 
@@ -52,6 +51,7 @@ describe "User Pages" do
 
         it { should have_selector('title', text: user.name) }
         it { should have_selector('div.alert.alert-success', text: 'Welcome') }
+        it { should have_link('Sign out') }
       end
 
       it "should create a user" do
